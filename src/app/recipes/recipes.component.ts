@@ -19,10 +19,6 @@ export class RecipesComponent implements OnInit {
       }
     )
   }
-  rclicked(r:Recipe){
-    console.log("sdgwedgsghsdggsdsdgsgdsdgsdgsdgsdgsdg");
-    console.log(r.name);
-    
-  }
+  
 
 }

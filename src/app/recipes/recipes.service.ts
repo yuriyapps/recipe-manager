@@ -16,6 +16,9 @@ export class RecipeService{
     addIngredientsSL(i:Ingredient[]){
         this.slService.addIngredients(i);
     }
+    gerRecipeById(id: number){
+        return this.recipes[id];
+    }
 
 
 }
