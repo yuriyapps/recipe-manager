@@ -7,9 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PROJECT';
-  option:number = 1;
+  
 
-  onOption(n:number){
-    this.option=n;
-  }
+  
 }
