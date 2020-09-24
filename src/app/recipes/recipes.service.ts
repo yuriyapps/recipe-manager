@@ -5,6 +5,8 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { Subject } from 'rxjs';
 @Injectable()
 export class RecipeService{
+    recipeChanged = new Subject<Recipe[]>();
+
     private recipes: Recipe[] = [new Recipe('Musched Potato', 'First recipe', 'https://static01.nyt.com/images/2013/06/26/dining/26JPFLEX1/26JPFLEX1-articleLarge-v3.jpg', 
     [new Ingredient('Meat',1),new Ingredient('French Fries', 20)]),
     new Recipe('Pasta', 'Second recipe', 'https://static01.nyt.com/images/2013/06/26/dining/26JPFLEX1/26JPFLEX1-articleLarge-v3.jpg', 
@@ -20,6 +22,18 @@ export class RecipeService{
     }
     gerRecipeById(id: number){
         return this.recipes[id];
+    }
+    addRecipe(recipe: Recipe){
+        this.recipes.push(recipe);
+        this.recipeChanged.next(this.recipes.slice());
+    }
+    updateRecipe(id:number, recipe: Recipe){
+        this.recipes[id] = recipe;
+        this.recipeChanged.next(this.recipes.slice());
+    }
+    deleteRecipe(id:number){
+        this.recipes.splice(id,1);
+        this.recipeChanged.next(this.recipes.slice());
     }
 
 
